@@ -1,0 +1,35 @@
+{
+	"name": "hafas-estimate-station-weight",
+	"description": "Pass in a HAFAS client, estimate the importance of a station.",
+	"version": "0.1.0",
+	"main": "index.js",
+	"files": [
+		"index.js"
+	],
+	"keywords": [
+		"hafas",
+		"public transport",
+		"transit",
+		"station",
+		"weight",
+		"importance"
+	],
+	"author": "Jannis R <mail@jannisr.de>",
+	"homepage": "https://github.com/derhuerst/hafas-estimate-station-weight",
+	"repository": "derhuerst/hafas-estimate-station-weight",
+	"bugs": "https://github.com/derhuerst/hafas-estimate-station-weight/issues",
+	"license": "ISC",
+	"engines": {
+		"node": ">=6"
+	},
+	"dependencies": {
+	},
+	"devDependencies": {
+		"tap-min": "^1.2.2",
+		"tape": "^4.8.0"
+	},
+	"scripts": {
+		"test": "node test.js | tap-min",
+		"prepublishOnly": "npm test"
+	}
+}
