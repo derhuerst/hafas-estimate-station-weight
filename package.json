@@ -28,8 +28,12 @@
 		"luxon": "^0.3.1"
 	},
 	"devDependencies": {
+		"sinon": "^4.2.0",
 		"tap-min": "^1.2.2",
-		"tape": "^4.8.0"
+		"tape": "^4.8.0",
+		"tape-promise": "^2.0.1",
+		"vbb-hafas": "^4.0.1",
+		"vbb-mode-weights": "^0.2.0"
 	},
 	"scripts": {
 		"test": "node test.js | tap-min",
