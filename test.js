@@ -3,6 +3,7 @@
 const pTape = require('tape-promise').default
 const tape = require('tape')
 const sinon = require('sinon')
+const co = require('co')
 
 const createEstimate = require('.')
 
@@ -33,7 +34,7 @@ const mockDepartures = (id, opt) => Promise.resolve([
 ])
 
 // todo: move to async test fn once Node 6 is out of active LTS
-test('properly collects the departures', async function* (t) {
+test('properly collects the departures', co.wrap(function* (t) {
 	let smallestWhen = Infinity, largestWhen = -Infinity
 	const fetchDeps = (id, opt) => {
 		if (id !== metropolis) throw new Error('id is not Metropolis')
@@ -55,4 +56,4 @@ test('properly collects the departures', async function* (t) {
 	t.equal(typeof weight, 'number')
 	t.ok(weight > 0)
 	t.end()
-})
+}))
