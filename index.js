@@ -23,13 +23,16 @@ const createEstimate = (client, weights) => {
 
 		let weight = 0
 		const onDep = (dep) => {
-			if (!dep.line || !dep.line.product) return
+			if (new Date(dep.when) > end || !dep.line || !dep.line.product) return
 			const p = dep.line.product
 			if ('number' === typeof weights[p]) weight += weights[p]
 		}
 
 		const depsAt = collectDeps(id, start)
-		const iterator = depsAt[Symbol.asyncIterator]()
+		// Some HAFAS API do not support querying departures for more than
+		// ~1 day at once. Therefore, we split the time period into sections.
+		// todo: put this into hafas-client, see derhuerst/hafas-client#14
+		const iterator = depsAt[Symbol.asyncIterator](1200)
 		while (true) {
 			const deps = (yield iterator.next()).value
 			for (let dep of deps) onDep(dep)
