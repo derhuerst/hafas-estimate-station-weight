@@ -35,7 +35,7 @@ const createEstimate = (client, weights) => {
 			for (let dep of deps) onDep(dep)
 
 			const lastDep = maxBy(deps, dep => +new Date(dep.when))
-			if (new Date(lastDep.when) >= end) break
+			if (lastDep && new Date(lastDep.when) >= end) break
 		}
 
 		return weight
