@@ -37,8 +37,10 @@ const mockDepartures = (id, opt) => Promise.resolve([
 test('properly collects the departures', co.wrap(function* (t) {
 	let smallestWhen = Infinity, largestWhen = -Infinity
 	const fetchDeps = (id, opt) => {
-		if (id !== metropolis) throw new Error('id is not Metropolis')
-		if (!opt && !opt.when) throw new Error('missing opt.when')
+		t.notOk(id !== metropolis, 'id is not Metropolis')
+		t.notOk(!opt && !opt.when, 'missing opt.when')
+		t.ok('number' === typeof opt.duration, 'departures called without duration')
+		t.ok(opt.duration > 100, 'departures called with a very small duration')
 		if (opt.when < smallestWhen) smallestWhen = +opt.when
 		if (opt.when > largestWhen) largestWhen = +opt.when
 		return mockDepartures(id, opt)

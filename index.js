@@ -32,9 +32,9 @@ const createEstimate = (client, weights) => {
 		// Some HAFAS API do not support querying departures for more than
 		// ~1 day at once. Therefore, we split the time period into sections.
 		// todo: put this into hafas-client, see derhuerst/hafas-client#14
-		const iterator = depsAt[Symbol.asyncIterator](1200)
+		const iterator = depsAt[Symbol.asyncIterator]()
 		while (true) {
-			const deps = (yield iterator.next()).value
+			const deps = (yield iterator.next(1200)).value
 			for (let dep of deps) onDep(dep)
 
 			const lastDep = maxBy(deps, dep => +new Date(dep.when))
