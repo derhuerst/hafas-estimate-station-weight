@@ -4,6 +4,7 @@ const createCollectDeps = require('hafas-collect-departures-at')
 const {DateTime} = require('luxon')
 const maxBy = require('lodash.maxby')
 const co = require('co')
+const round = require('lodash.round')
 
 // Because this estimation only takes a single day into account, it is inaccurate.
 // todo: improve it, e.g. using different days of the week or number of lines
@@ -41,6 +42,10 @@ const createEstimate = (client, weights) => {
 			if (lastDep && new Date(lastDep.when) >= end) break
 		}
 
+		if (weight > 0) {
+			const decimals = Math.floor(5 - Math.log10(weight))
+			return round(weight, decimals)
+		}
 		return weight
 	})
 	return estimate
