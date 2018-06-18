@@ -12,7 +12,7 @@ const createEstimate = (client, weights) => {
 	// todo: validate args
 	const collectDeps = createCollectDeps(client.departures)
 
-	const estimate = co.wrap(function* (id) {
+	const estimate = co.wrap(function* (id, maxIterations = Infinity) {
 		const startOfWeek = DateTime.fromMillis(Date.now(), {
 			zone: client.profile.timezone,
 			locale: client.profile.locale
@@ -35,11 +35,13 @@ const createEstimate = (client, weights) => {
 		// todo: put this into hafas-client, see public-transport/hafas-client#14
 		const iterator = depsAt[Symbol.asyncIterator]()
 		while (true) {
+			iterations++
 			const deps = (yield iterator.next(1200)).value
 			for (let dep of deps) onDep(dep)
 
 			const lastDep = maxBy(deps, dep => +new Date(dep.when))
 			if (lastDep && new Date(lastDep.when) >= end) break
+			if (iterations > maxIterations) break
 		}
 
 		if (weight > 0) {
