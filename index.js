@@ -34,6 +34,7 @@ const createEstimate = (client, weights) => {
 		// ~1 day at once. Therefore, we split the time period into sections.
 		// todo: put this into hafas-client, see public-transport/hafas-client#14
 		const iterator = depsAt[Symbol.asyncIterator]()
+		let iterations = 0
 		while (true) {
 			iterations++
 			const deps = (yield iterator.next(1200)).value
