@@ -1,6 +1,6 @@
 {
 	"name": "hafas-estimate-station-weight",
-	"description": "Pass in a HAFAS client, estimate the importance of a station.",
+	"description": "Pass in a HAFAS client, estimate the importance/weight of a station.",
 	"version": "1.0.0",
 	"main": "index.js",
 	"files": [

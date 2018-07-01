@@ -1,6 +1,6 @@
 # hafas-estimate-station-weight
 
-Pass in a [`hafas-client`](https://github.com/public-transport/hafas-client#hafas-client)-compatible [HAFAS](https://de.wikipedia.org/wiki/HAFAS) API client and **estimate the importance of a station**.
+Pass in a [`hafas-client`](https://github.com/public-transport/hafas-client#hafas-client)-compatible [HAFAS](https://de.wikipedia.org/wiki/HAFAS) API client and **estimate the importance/weight of a station**.
 
 [![npm version](https://img.shields.io/npm/v/hafas-estimate-station-weight.svg)](https://www.npmjs.com/package/hafas-estimate-station-weight)
 [![build status](https://api.travis-ci.org/derhuerst/hafas-estimate-station-weight.svg?branch=master)](https://travis-ci.org/derhuerst/hafas-estimate-station-weight)
@@ -19,7 +19,20 @@ npm install hafas-estimate-station-weight
 ## Usage
 
 ```js
-todo
+const createEstimate = require('hafas-estimate-station-weight')
+const vbb = require('vbb-hafas') // can be any `hafas-client`-compatible client
+const vbbWeights = require('vbb-mode-weights')
+
+const estimate = createEstimate(vbb, vbbWeights)
+
+const friedrichstr = '900000100001'
+estimate(friedrichstr)
+.then(weight => console.log('weight of S+U Friedrichstr. is', weight))
+.catch(console.error)
+```
+
+```
+weight of S+U Friedrichstr. is 1882.8
 ```
 
 
