@@ -1,7 +1,7 @@
 {
 	"name": "hafas-estimate-station-weight",
 	"description": "Pass in a HAFAS client, estimate the importance/weight of a station.",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"main": "index.js",
 	"files": [
 		"index.js"
@@ -34,8 +34,11 @@
 		"tap-min": "^1.2.2",
 		"tape": "^4.8.0",
 		"tape-promise": "^3.0.0",
-		"vbb-hafas": "^4.0.1",
+		"vbb-hafas": "^5.0.0-alpha.5",
 		"vbb-mode-weights": "^0.2.0"
+	},
+	"peerDependencies": {
+		"hafas-client": "^3.0.0-alpha.15"
 	},
 	"scripts": {
 		"test": "node test.js | tap-min",
