@@ -27,10 +27,10 @@ const mockDeparture = (id, t) => ({
 	}
 })
 const mockDepartures = (id, opt) => Promise.resolve([
-	mockDeparture(id, 1 * minute + opt.when),
-	mockDeparture(id, 2 * minute + opt.when),
-	mockDeparture(id, 4 * minute + opt.when),
-	mockDeparture(id, 7 * minute + opt.when)
+	mockDeparture(id, 1 * minute + (+new Date(opt.when))),
+	mockDeparture(id, 2 * minute + (+new Date(opt.when))),
+	mockDeparture(id, 4 * minute + (+new Date(opt.when))),
+	mockDeparture(id, 7 * minute + (+new Date(opt.when)))
 ])
 
 // todo: move to async test fn once Node 6 is out of active LTS
@@ -41,8 +41,8 @@ test('properly collects the departures', co.wrap(function* (t) {
 		t.notOk(!opt && !opt.when, 'missing opt.when')
 		t.ok('number' === typeof opt.duration, 'departures called without duration')
 		t.ok(opt.duration > 100, 'departures called with a very small duration')
-		if (opt.when < smallestWhen) smallestWhen = +opt.when
-		if (opt.when > largestWhen) largestWhen = +opt.when
+		if (opt.when < smallestWhen) smallestWhen = +new Date(opt.when)
+		if (opt.when > largestWhen) largestWhen = +new Date(opt.when)
 		return mockDepartures(id, opt)
 	}
 
