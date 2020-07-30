@@ -3,7 +3,6 @@
 const pTape = require('tape-promise').default
 const tape = require('tape')
 const sinon = require('sinon')
-const co = require('co')
 
 const createEstimate = require('.')
 
@@ -26,15 +25,15 @@ const mockDeparture = (id, t) => ({
 		product: 'hyperloop'
 	}
 })
-const mockDepartures = (id, opt) => Promise.resolve([
+const mockDepartures = async (id, opt) => [
 	mockDeparture(id, 1 * minute + (+new Date(opt.when))),
 	mockDeparture(id, 2 * minute + (+new Date(opt.when))),
 	mockDeparture(id, 4 * minute + (+new Date(opt.when))),
 	mockDeparture(id, 7 * minute + (+new Date(opt.when)))
-])
+]
 
 // todo: move to async test fn once Node 6 is out of active LTS
-test('properly collects the departures', co.wrap(function* (t) {
+test('properly collects the departures', async (t) => {
 	let smallestWhen = Infinity, largestWhen = -Infinity
 	const fetchDeps = (id, opt) => {
 		t.notOk(id !== metropolis, 'id is not Metropolis')
@@ -54,8 +53,8 @@ test('properly collects the departures', co.wrap(function* (t) {
 	})
 
 	t.notOk(largestWhen > smallestWhen + day, 'opt.when outside the range')
-	const weight = yield estimate(metropolis)
+	const weight = await estimate(metropolis)
 	t.equal(typeof weight, 'number')
 	t.ok(weight > 0)
 	t.end()
-}))
+})
