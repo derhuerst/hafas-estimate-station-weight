@@ -32,8 +32,10 @@ estimate(friedrichstr)
 .catch(console.error)
 ```
 
+Estimating the weight of a station will take ~20s, because several requests will be made.
+
 ```
-weight of S+U Friedrichstr. is 1882.8
+weight of S+U Friedrichstr. is 1809.8
 ```
 
 

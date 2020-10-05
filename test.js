@@ -39,7 +39,6 @@ test('properly collects the departures', async (t) => {
 		t.notOk(id !== metropolis, 'id is not Metropolis')
 		t.notOk(!opt && !opt.when, 'missing opt.when')
 		t.ok('number' === typeof opt.duration, 'departures called without duration')
-		t.ok(opt.duration > 100, 'departures called with a very small duration')
 		if (opt.when < smallestWhen) smallestWhen = +new Date(opt.when)
 		if (opt.when > largestWhen) largestWhen = +new Date(opt.when)
 		return mockDepartures(id, opt)
