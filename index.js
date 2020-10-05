@@ -4,6 +4,7 @@ const createCollectDeps = require('hafas-collect-departures-at')
 const {DateTime} = require('luxon')
 const maxBy = require('lodash.maxby')
 const round = require('lodash.round')
+const findDepsDurLimit = require('hafas-find-departures-duration-limit')
 
 // Because this estimation only takes a single day into account, it is inaccurate.
 // todo: improve it, e.g. using different days of the week or number of lines
@@ -28,19 +29,20 @@ const createEstimate = (client, weights) => {
 			if ('number' === typeof weights[p]) weight += weights[p]
 		}
 
-		const depsAt = collectDeps(id, start)
 		// Some HAFAS API do not support querying departures for more than
 		// ~1 day at once. Therefore, we split the time period into sections.
 		// todo: put this into hafas-client, see public-transport/hafas-client#14
+		const dur = await findDepsDurLimit(client, id)
+		const depsAt = collectDeps(id, start)
 		const iterator = depsAt[Symbol.asyncIterator]()
 		let iterations = 0
 		while (true) {
 			iterations++
-			const deps = (await iterator.next(1200)).value
+			const deps = (await iterator.next(dur)).value
 			for (let dep of deps) onDep(dep)
 
-			const lastDep = maxBy(deps, dep => +new Date(dep.when))
-			if (lastDep && new Date(lastDep.when) >= end) break
+			const lastDep = maxBy(deps, dep => Date.parse(dep.when))
+			if (lastDep && Date.parse(lastDep.when) >= end) break
 			if (iterations > maxIterations) break
 		}
 
