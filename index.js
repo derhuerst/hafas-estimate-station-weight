@@ -2,8 +2,8 @@
 
 const createCollectDeps = require('hafas-collect-departures-at')
 const {DateTime} = require('luxon')
-const maxBy = require('lodash.maxby')
-const round = require('lodash.round')
+const maxBy = require('lodash/maxBy')
+const round = require('lodash/round')
 const findDepsDurLimit = require('hafas-find-departures-duration-limit')
 
 // Because this estimation only takes a single day into account, it is inaccurate.
