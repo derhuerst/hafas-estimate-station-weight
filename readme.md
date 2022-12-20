@@ -29,13 +29,10 @@ const friedrichstr = '900100001'
 
 const weight = await estimate(friedrichstr)
 console.log('weight of S+U Friedrichstr. is', weight)
+// weight of S+U Friedrichstr. is 1809.8
 ```
 
 Estimating the weight of a station will take ~20s, because several requests will be made.
-
-```
-weight of S+U Friedrichstr. is 1809.8
-```
 
 
 ## Contributing

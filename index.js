@@ -6,7 +6,7 @@ import findDepsDurLimit from 'hafas-find-departures-duration-limit'
 
 // Because this estimation only takes a single day into account, it is inaccurate.
 // todo: improve it, e.g. using different days of the week or number of lines
-const createEstimate = (client, weights) => {
+const createEstimateStationWeight = (client, weights) => {
 	// todo: validate args
 	const collectDeps = createCollectDeps(client.departures)
 
@@ -55,5 +55,5 @@ const createEstimate = (client, weights) => {
 }
 
 export {
-	createEstimate,
+	createEstimateStationWeight as createEstimate,
 }
