@@ -2,6 +2,7 @@
 	"name": "hafas-estimate-station-weight",
 	"description": "Pass in a HAFAS client, estimate the importance/weight of a station.",
 	"version": "3.0.1",
+	"type": "module",
 	"main": "index.js",
 	"files": [
 		"index.js",
@@ -23,7 +24,7 @@
 	"bugs": "https://github.com/derhuerst/hafas-estimate-station-weight/issues",
 	"license": "ISC",
 	"engines": {
-		"node": ">=12"
+		"node": ">=18"
 	},
 	"dependencies": {
 		"hafas-collect-departures-at": "^3.1.1",
@@ -32,7 +33,7 @@
 		"luxon": "^3.1.1"
 	},
 	"devDependencies": {
-		"eslint": "^7.32.0",
+		"eslint": "^8.30.0",
 		"tap-min": "^2.0.0",
 		"tape": "^5.0.1",
 		"tape-promise": "^4.0.0",

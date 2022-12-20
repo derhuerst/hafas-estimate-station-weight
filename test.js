@@ -1,9 +1,8 @@
-'use strict'
+import _tapePromise from 'tape-promise'
+const {default: pTape} = _tapePromise
+import tape from 'tape'
 
-const pTape = require('tape-promise').default
-const tape = require('tape')
-
-const createEstimate = require('.')
+import {createEstimate} from './index.js'
 
 const test = pTape(tape)
 

@@ -18,17 +18,17 @@ npm install hafas-estimate-station-weight
 ## Usage
 
 ```js
-const createEstimate = require('hafas-estimate-station-weight')
-const createHafas = require('vbb-hafas') // can be any `hafas-client`-compatible client
-const vbbWeights = require('vbb-mode-weights')
+import {createEstimate} from 'hafas-estimate-station-weight'
+import createHafas from 'vbb-hafas' // can be any `hafas-client`-compatible client
+import vbbWeights from 'vbb-mode-weights'
 
 const hafas = createHafas('my-awesome-program')
 const estimate = createEstimate(hafas, vbbWeights)
 
 const friedrichstr = '900000100001'
-estimate(friedrichstr)
-.then(weight => console.log('weight of S+U Friedrichstr. is', weight))
-.catch(console.error)
+
+const weight = await estimate(friedrichstr)
+console.log('weight of S+U Friedrichstr. is', weight)
 ```
 
 Estimating the weight of a station will take ~20s, because several requests will be made.
