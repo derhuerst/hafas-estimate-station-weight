@@ -2,7 +2,6 @@
 
 const pTape = require('tape-promise').default
 const tape = require('tape')
-const sinon = require('sinon')
 
 const createEstimate = require('.')
 
