@@ -36,6 +36,7 @@ const createEstimate = (client, weights) => {
 		const depsAt = collectDeps(id, start)
 		const iterator = depsAt[Symbol.asyncIterator]()
 		let iterations = 0
+		// eslint-disable-next-line no-constant-condition
 		while (true) {
 			iterations++
 			const deps = (await iterator.next(dur)).value
