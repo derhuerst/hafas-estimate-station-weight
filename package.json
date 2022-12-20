@@ -41,7 +41,7 @@
 		"vbb-mode-weights": "^0.2.0"
 	},
 	"peerDependencies": {
-		"hafas-client": "^3 || ^4 || ^5 || ^6"
+		"hafas-client": "^6"
 	},
 	"scripts": {
 		"lint": "eslint .",

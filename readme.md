@@ -1,6 +1,6 @@
 # hafas-estimate-station-weight
 
-Pass in a [`hafas-client`](https://github.com/public-transport/hafas-client#hafas-client)-compatible [HAFAS](https://de.wikipedia.org/wiki/HAFAS) API client and **estimate the importance/weight of a station**.
+Pass in a [`hafas-client@6`](https://github.com/public-transport/hafas-client/tree/6)-compatible [HAFAS](https://de.wikipedia.org/wiki/HAFAS) API client and **estimate the importance/weight of a station**.
 
 [![npm version](https://img.shields.io/npm/v/hafas-estimate-station-weight.svg)](https://www.npmjs.com/package/hafas-estimate-station-weight)
 ![ISC-licensed](https://img.shields.io/github/license/derhuerst/hafas-estimate-station-weight.svg)
