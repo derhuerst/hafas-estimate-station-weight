@@ -1,4 +1,4 @@
-import createCollectDeps from 'hafas-collect-departures-at'
+import {createCollectDeps} from 'hafas-collect-departures-at'
 import {DateTime} from 'luxon'
 import maxBy from 'lodash/maxBy.js'
 import round from 'lodash/round.js'

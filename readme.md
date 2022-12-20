@@ -19,13 +19,13 @@ npm install hafas-estimate-station-weight
 
 ```js
 import {createEstimate} from 'hafas-estimate-station-weight'
-import createHafas from 'vbb-hafas' // can be any `hafas-client`-compatible client
+import {createVbbHafas} from 'vbb-hafas' // can be any `hafas-client`-compatible client
 import vbbWeights from 'vbb-mode-weights'
 
-const hafas = createHafas('my-awesome-program')
+const hafas = createVbbHafas('my-awesome-program')
 const estimate = createEstimate(hafas, vbbWeights)
 
-const friedrichstr = '900000100001'
+const friedrichstr = '900100001'
 
 const weight = await estimate(friedrichstr)
 console.log('weight of S+U Friedrichstr. is', weight)

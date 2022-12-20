@@ -27,7 +27,7 @@
 		"node": ">=18"
 	},
 	"dependencies": {
-		"hafas-collect-departures-at": "^3.1.1",
+		"hafas-collect-departures-at": "^4.0.0",
 		"hafas-find-departures-duration-limit": "^1.0.2",
 		"lodash": "^4.17.21",
 		"luxon": "^3.1.1"
@@ -37,7 +37,7 @@
 		"tap-min": "^2.0.0",
 		"tape": "^5.0.1",
 		"tape-promise": "^4.0.0",
-		"vbb-hafas": "^7.0.3",
+		"vbb-hafas": "^8.0.1",
 		"vbb-mode-weights": "^0.2.0"
 	},
 	"peerDependencies": {
